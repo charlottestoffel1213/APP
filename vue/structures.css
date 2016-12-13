@@ -1,0 +1,132 @@
+#global{
+	background-color: white; 
+}
+img { /*Logo placé en haut a gauche et taille reduite*/
+	height: auto;
+	width: 200px;
+	position: left;
+	vertical-align: middle;
+}
+
+#tete{
+	
+	float:top left;
+	display: inline-block;
+}
+/*Configuration header*/
+/*Configuration de la barre horizontale de navigation*/
+nav {
+	padding: 0; margin: 0;
+	text-align: center; 
+	display:inline-block;
+	background: white;
+}
+nav ul{
+	color: #5b84a4; /*ecriture bleu*/
+	list-style: none;
+	padding: 4px; /*fait de la place autour des liens*/
+}
+
+nav li {
+	display: inline-block;
+	list-style: none;
+}
+nav a {
+	display:block;
+	margin: 0 30px;
+	color: #5b84a4;
+	font-size: 20px;	
+}
+a{
+	font-family: Roboto, OpenSans, Arial, sans-serif;
+	text-decoration: none;
+	color:#b0b4b7;
+	font-size: 14px;
+	/*Definition de la transition pour les navigateur*/
+	transition: all .3s;
+}
+
+/*Zone plus sombre lors de la séléction*/
+ul li a:hover, 
+ul li a:focus{
+	background: #5b84a4;
+	color: white;
+	padding-left: 30px;
+}
+/*Fin barre horizontale de navigation */
+
+hr{
+	border: 0; height: 2px; background-image: -webkit-linear-gradient(top, #5b84a4, #5e8fbc, #DEE7ED);
+	background-image:-moz-linear-gradient(top, #5b84a4, #5e8fbc, #DEE7ED);
+	background-image:-ms-linear-gradient(top, #5b84a4, #5e8fbc, #DEE7ED);
+	background-image:-o-linear-gradient(top, #5b84a4, #5e8fbc, #DEE7ED);
+}
+
+#connexion{
+	display: inline-block;
+	border:1px solid black;
+	
+}
+#corps {
+	margin: 20px;
+}
+#menu{
+	background-color: #5b84a4;
+	float:left;
+	width: 200px;
+	margin-bottom: 20px;
+	box-shadow: 0px 0px 8px 2px #b0b4b7;
+}
+#menu ul{
+	color: white; 
+	list-style: none;
+	padding: 4px; /*fait de la place autour des liens*/
+	margin:0;
+	background-color: #5b84a4;
+}
+#menu li,a{
+	display:block; /*deviennent des blocs*/
+}
+#menu a{
+	font-size: 20px;
+	color: white;
+	text-align: left;
+	padding: 5px 20px;
+	text-decoration: none; /*enleve le soulignement*/
+	/*Definition de la transition pour les navigateur*/
+	transition: all .3s; 
+	background-color: #5b84a4;
+}
+#menu a:hover, /*Configuration lorsqu'on passe le curseur sur le lien*/
+#menu a:focus {/*le lien associé à l'étape courante est mis en couleur*/
+	background: white;
+	color: #5b84a4;
+	padding-left: 30px; /*decale le contenu vers la droite*/
+}
+	
+#contenu{	
+	margin-left: 245px;
+}
+#pied{
+	background-color: white;
+	clear:both; /*Se situe en dessous de tous les autres*/
+}
+/*Configuratiuon du footer*/
+footer{
+	padding: 0; margin: 0;
+	text-align: center;
+	border-radius: 3px;
+	background-color: #EEEEEE;
+	line-height: 50px;
+}
+footer li {
+	display: inline-block;
+	list-style: none
+}
+footer a {
+	display:inline-block;
+	margin: 0 30px;
+	color: #5b84a4;
+	font-size: 20px;
+	}
+/*Fin footer*/

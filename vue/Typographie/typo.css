@@ -1,0 +1,32 @@
+﻿
+@font-face { /*Definition des polices */
+	font-family: 'DevelopmentHell';
+	src: url('DevelopmentHell/DevelopmentHell.OTF');
+	font-family: 'Oswald';
+	src: url('Oswald/Oswald-Regular.TTF');
+	font-family: 'Roboto';
+	src: url('Roboto/Roboto-Regular.TTF');	
+	font-family: 'OpenSans';
+	src: url('OpenSans/OpenSans-Regular.TTF');
+}
+
+h1 {
+	font-family: DevelopmentHell, sans-serif;
+	color: #5b84a4; /*Couleur bleu du logo*/
+	font-size: 36px;
+	text-align: center;
+}
+h2 {
+	font-family: Oswald, OpenSans, sans-serif;
+	color: #7E7E7E; /*Couleur gris un peu plus foncé que celui du logo*/
+	font-size: 20px;
+	text-align: left;
+}
+body {
+	font-family: Roboto, OpenSans, Arial, sans-serif;
+	color: #222222; /*Couleur noir */
+	font-size: 16px;
+	text-align: justify;
+}
+
+
