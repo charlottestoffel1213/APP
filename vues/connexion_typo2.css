@@ -1,0 +1,134 @@
+.container{
+	background-image: url('../vue/fotolia.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#block{
+	display: block;
+	width: 400px;
+	height: 330px;
+	background-color: rgba(255, 255, 255, 0.7);
+	margin: 0 auto;	
+	
+}
+#block2{
+	display: block;
+	width: 600px;
+	height: 830px;
+	background-color: lightgrey;
+	margin: 10px;	
+}
+.global{
+	padding-top: 15px;
+	padding-bottom: 3px;
+	
+}
+legend{
+	padding-top: 5px;
+}
+td{
+	color: #5b84a4 ;
+}
+
+
+.textblock{
+	border:1px solid lightgrey;
+	padding:4px;
+
+	color: black;
+	width: 170px;
+	height: 25px;
+	font-size: 13px;
+	margin-bottom: 20px;
+}
+.textblock:hover
+.textblock:focus {
+	border: 5px solid #5b84a4;
+	color: black;
+	border-color: #5b84a4;
+	
+}
+.pseudo{
+	background-image: url('../vue/pseudo.png');
+	background-size: 15px;
+	background-repeat: no-repeat;
+	background-position: 6px 8.5px;
+	padding-left:  27px;
+
+}
+.password{
+	background-image: url('../vue/mail4.png');
+	background-size: 15px;
+	background-repeat: no-repeat;
+	background-position: 6px 13px;
+	padding-left:  27px;
+
+}
+
+
+.new a{
+	color: #a2a5a5;
+	list-style: none;
+	list-style-type: none;
+	text-decoration: none;
+	margin-bottom: 60px;
+	font-size: 15px;
+	border:0.7px solid #a2a5a5;
+	padding-top: 1px;
+	padding-bottom: 2.2px;
+}
+.new{
+	padding-bottom: 0.5px;
+	width: 200px;
+	height: 40px;
+	
+}
+
+
+
+
+
+
+
+
+
+.submit{
+	/*transition: all 0.3s ease;
+	color: white;
+	float:left;
+	background-color: #5b84a4;
+	width: 200px;
+	margin-bottom: 30px;
+	box-shadow: 0px 0px 8px 2px #b0b4b7;
+	padding: 4px;
+	font-size: 20px;
+	padding: 5px 20px;
+	display: block;*/
+	color : white;
+	background-color: #5b84a4 ;
+	border: 1.4px solid;
+	width: 200px;
+	margin-bottom: 30px;
+	padding: 15px;
+	font-size: 20px;
+	padding: 5px 20px;
+	display: block;
+	transition: all 0.4s ease;
+	border-color: #5b84a4 ;
+	
+
+}
+.submit:hover{
+	/*background-color: white;
+	color: #5b84a4;*/
+	/*padding-left: 30px;*/
+	background-color: white  ;
+	color: #5b84a4 ;
+	border-color: #5b84a4 ;
+
+
+
+}
+fieldset{
+	color: lightgrey ;
+}
