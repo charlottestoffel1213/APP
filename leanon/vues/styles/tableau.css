@@ -1,0 +1,38 @@
+table {
+    border-collapse: collapse;
+}
+th.case {
+  width: 50px;
+}
+table, th, td {
+    border: 1px solid black;
+
+}
+table {
+  width: 100%;
+}
+table.liste{
+  width: 60%;
+  padding-right: 40px;
+}
+
+th {
+    height: 40px;
+    text-align: center;
+    background-color: #5b84a4;
+    color: white;
+}
+td.check{
+  text-align: center;
+}
+td {
+
+  vertical-align: bottom;
+  text-align: left;
+}
+th, td {
+    padding: 10px;
+}
+
+tr:nth-child(even) {background-color: #D8E4EC}
+tr {height: 15px;}
