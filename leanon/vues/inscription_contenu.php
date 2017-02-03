@@ -33,11 +33,13 @@
         		<input type="text"  name="mail"  class="textblock" id='mail' required/>
         		</td>
         	</tr>
+        	<?php if (!isset($_GET['type'])){ ?>
         	<tr>
         		<td><label for='code'>Code Client (*) :</label>
         		<input type="text"  name="code"  class="textblock" id ='code' required/>
         		</td>
         	</tr>
+        	<?php } ?>
         	<tr>
         		<td><label for='nom'> Nom: </label> 
         		<input type="text"  name="nom" class="textblock" id='nom'/>
@@ -45,7 +47,7 @@
         	</tr>
         	<tr>
         		<td><label for='prenom'> Prénom:</label>
-        		<input type="text"  name="prenom"  class="textblock" i='prenom'/>
+        		<input type="text"  name="prenom"  class="textblock" id='prenom'/>
         		</td>
         	</tr>
         	<tr>

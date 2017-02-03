@@ -50,39 +50,36 @@ if($function == "accueil") {
 	
 } elseif ($function == 'messagerie') {
 	$content = 'messagerie';
-	if(isset($_POST['envoi']))
-	{
-		if(isset($_POST['destinataire'], $_POST['message']) AND !empty($_POST['destinataire']) AND !empty($_POST['message'])){ //si les champs sont complÃ©tÃ©s.
-			$destinataire = htmlspecialchars($_POST['destinataire']);
-			$message = htmlspecialchars($_POST['message']);
-			$date = date('Y-m-d H:i:s');
-			//recuperer l'id du destinataire
-			$id_destinataire = $bdd->prepare('SELECT id FROM utilisateur WHERE username = ?');
-			$id_destinataire->execute(array($destinataire));
-			$destinataire_exist = $id_destinataire->rowCount();
-			//verifie si le destintaire existe dans la base de donnÃ©e, action sÃ©curitÃ©.
-			if ($destinataire_exist ==  1){
-				$id_destinataire = $id_destinataire->fetch();
-				$id_destinataire = $id_destinataire['id'];
-				//envoyer le message, inserer dans la base de donnÃ©es "chat".
-				$values = array('message' => $message, 'id_destinataire' => $id_destinataire, 'id_expediteur' => $_SESSION['id'], 'date' => $date, 'requette'=>$requette );
-				$table = 'chat';
-				$retour = insertion($bdd, $values, $table);
-				if ($retour){
-					$error = "Votre message a Ã©tÃ© envoyÃ©";
-				}
-			}else{
-				$error = "Cet utilisateur n'existe pas!";
+	
+	// On cherche tout les chats qui existent
+	$liste_chat = $bdd->query('SELECT * FROM chat ORDER BY id DESC');
+	if (isset($_GET['chat'])){
+		//affiche la requete du client
+		$titre_req= selection($bdd,'chat','requete','id',$_GET['chat']);
+		$titre_req = $titre_req->fetch();
+		//Si le formulaire pour rentrer un nv message est remplie
+		if(!empty($_POST['message_chat'])){
+			$id_createur = selection($bdd,'chat','id_createur','id',$_GET['chat']);
+			$id_createur = $id_createur->fetch();
+			
+			$valeur = array('id_expediteur' => $_SESSION['id'], 'id_destinataire'=> $id_createur['id_createur'], 'id_chat'=> $_GET['chat'], 'message' => $_POST['message_chat'], 'date' => date('Y-m-d H:i:s'));
+			$table ='chat_msg';
+			$add = insertion($bdd,$valeur,$table);
+			if ($add){
+				$error = "Votre message a Ã©tÃ© envoyÃ© !";
 			}
-		}else{
+		}else
+		{
 			$error = "Veuillez completer tous les champs!";
 		}
+	
+	
+		//affiche les messages
+		$msg = $bdd->prepare('SELECT * FROM chat_msg WHERE id_chat = :id_chat ');
+		$msg->execute(array('id_chat'=>$_GET['chat']));
 	}
-	//met dans l'ordre les destinataires
-	$destinataire = $bdd->query('SELECT username FROM utilisateur ORDER BY username');
-	//affiche les messages
-	$msg = $bdd->prepare('SELECT * FROM chat WHERE id_destinataire = ? ORDER BY id DESC');
-	$msg->execute(array($_SESSION['id']));
+	
+	
 
 
 } elseif ($function == "boutique"){
@@ -178,14 +175,88 @@ if($function == "accueil") {
 			$stm = insertion($bdd,$values,$table);
 		}
 		
-	
+	}
 		
 	
-	}
-    
+} elseif($function == "nb_capteur") {
+        $content = "ajout_capteur";
+     include("modele/obj_connectes.php");
+        
+        
+        $id=$_GET['id'];
+        
+
+		$req1 = $bdd->query("SELECT pieces.id_maison  FROM pieces JOIN utilisateurs_maison ON utilisateurs_maison.id_maison=pieces.id_maison  WHERE '".$id."'=id_utilisateurs" );
+		while ($req=$req1->fetch()){
+			if (isset($req['id_maison'])){
+				$maison=$req['id_maison'];
+		}}
+		
+    	
+		
+			$liste_obj=liste_obj('global','global',$maison);
+        
+			
+
+} elseif($function == "ajout_capteur") {
+       				$content = "ajt_cap";
+       				$maison=$_GET['maison'];
+       				
 
 
+
+       				if (isset($_POST['ajouter'])){
+        				$nom=$_POST['nom_cap'];
+        				$id_p=$_POST['piece'];
+        			
+        				$code=$_POST['id_cap'];
+        				$query = $bdd->prepare('SELECT count(*) as nb FROM obj_connectes JOIN pieces ON pieces.id=obj_connectes.id_piece  WHERE obj_connectes.nom  =?  and  obj_connectes.id_piece= ?  and pieces.id_maison =  ?');
+        				$query->execute(array($_POST['nom_cap'],$id_p=$_POST['piece'],$maison));
+        		 	
+
+            			$requete = $query->fetch(); // on parcours ligne par ligne l'ensemble de la base donnée
+            			if (isset($requete['nb']) && $requete['nb'] != 0) 
+            			{
+                		$alerte = 'Ce nom de capteur a déja été utilisé';
+               			 echo $alerte . '<br/>'; // on renvoie l'erreur
+            			} 
+            		
+
+            		
+            			else {
+            			$code=$_POST['id_cap'];
+            			$query =$bdd->prepare( 'SELECT count(*) as nb FROM obj_connectes JOIN pieces ON pieces.id=obj_connectes.id_piece  WHERE obj_connectes.code= ? and pieces.id_maison=? ');
+            		 	$query->execute(array($id_p=$_POST['id_cap'],$maison)); 
+            			$requete = $query->fetch(); // on parcours ligne par ligne l'ensemble de la base donnée
+            				if (isset($requete['nb']) && $requete['nb'] != 0) 
+            				{
+                				$alerte = 'Ce capteur a déja été rentré';
+               					 echo $alerte . '<br/>'; // on renvoie l'erreur
+            				} 
+            				else{
+            					
+            								$cate = htmlspecialchars($_POST['categorie']);
+		            						$nom = htmlspecialchars($_POST['nom_cap']);
+		            						$code = htmlspecialchars($_POST['id_cap']);
+		            						$id_p=htmlspecialchars($_POST['piece']);
+
+				                		$values = array('nom' => $nom, 'code' => $code, 'id_piece' => $id_p,'id_categorie_objets_connectes' =>$cate);
+				                		$table = 'obj_connectes';
+				                		$inscription = insertion($bdd, $values, $table);
+				                		include("modele/obj_connectes.php");
+				                		
+				                			
+				                			$req1 = selection($bdd, 'pieces', 'id', 'id_maison', $maison);
+				                			$liste_obj=liste_obj('global','global',$maison);
+				                			$content="ajout_capteur";
+		        		 			}
+        				}
+        			}
+} elseif($function == "trouver") {
+	$content = "trouver";
 }
+	
+
 
 
 include('vues/' . $content . '.php');

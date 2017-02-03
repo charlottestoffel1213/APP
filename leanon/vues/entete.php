@@ -17,7 +17,7 @@ if (isset($_SESSION['id']) AND ($_SESSION['id_type_utilisateur'] == 1))
 ?>
 	<a href="/leanon/index.php"><img src="/leanon/vues/Typographie/Logo.jpg"></a>
 	<div class="block"><a href="/leanon/index.php">Accueil</a></div>
-	<div class="block"><a href="index.php?cible=users&amp;function=pilotage&piece=maison">Maison</a></div>
+	<div class="block"><a href="index.php?cible=users&amp;function=pilotage&piece=Maison">Maison</a></div>
 	<div class="block"><a href="index.php?cible=users&amp;function=compte">Compte</a></div>
 	<div class="block"><a href="index.php?cible=users&amp;function=boutique">Boutique</a></div>
 	<div class="block"><a href="index.php?cible=users&amp;function=contacter">Nous contacter</a></div>
@@ -47,7 +47,7 @@ if (isset($_SESSION['id']) AND ($_SESSION['id_type_utilisateur'] == 2))
 ?>
 	<a href="/leanon/index.php"><img src="/leanon/vues/Typographie/Logo.jpg"></a>
 	<div class="block"><a href="/leanon/index.php">Accueil</a></div>
-	<div class="block"><a href="index.php?cible=users&amp;function=pilotage&piece=maison">Maison</a></div>
+	<div class="block"><a href="index.php?cible=users&amp;function=pilotage&piece=Maison">Maison</a></div>
 	<div class="block"><a href="index.php?cible=users&amp;function=compte">Compte</a></div>
 	<div class="block"><a href="index.php?cible=users&amp;function=boutique">Boutique</a></div>
 	<div class="block"><a href="index.php?cible=users&amp;function=contacter">Nous contacter</a></div>

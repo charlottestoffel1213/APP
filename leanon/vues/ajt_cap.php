@@ -1,14 +1,16 @@
-
 <?php
 	require "commun.php";
 
 	$header = entete($connecte);
 	$pied = pied();
 	$connexion = connexion($connecte);
-	$menu= menu('pilotage');
+	$menu = menu('compte');
+	
+	
 	ob_start();
-	include "vues/mode_contenu.php";
+	include('vues/formu_cap.php');
 	$contenu= ob_get_clean();
 
-	include "gabarit.php";
-?>
+	
+		include "gabarit2.php";
+	

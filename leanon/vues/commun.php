@@ -74,18 +74,19 @@ function menu($function){
                     case "pilotage": //A revoir 
                     $req1 = selection($bdd,'pieces','nom','id_maison', $_SESSION['maison'] );
 
-                    echo('<li><a href="index.php?cible=users&function=pilotage&piece=maison">Ma Maison</a></li>');
+                    echo('<li><a href="index.php?cible=users&function=pilotage&piece=Maison">Ma Maison</a></li>');
                      // Affiche la liste des pieces dans la maison 
                     while($key = $req1->fetch() ) {
                         echo ('
                     	<li><a href="index.php?cible=users&function=pilotage&piece='.$key['nom'].'"> '. $key['nom'] . '</a></li>
                     	'); }
-                        if($_SESSION['id_type_utilisateur'] == 1){
+                    if($_SESSION['id_type_utilisateur'] == 1){
                         	echo ('<li><a href = "index.php?cible=users&function=config">Configurer ma maison</a></li>');
-                        }
+                    }
+                    echo ('<li><a href = "index.php?cible=users&function=mode">Mode</a></li>');
                     break;
                     case "contacter":
-                    echo('<li><a href="index.php?cible=users&function=contacter">Nous contacter</a></li>
+                    echo('<li><a href="index.php?cible=users&function=trouver">Nous trouver</a></li>
                         <li><a href="index.php?cible=users&function=FAQ">FAQ</a></li>
                         <li><a href="index.php?cible=users&function=forum">Forum</a></li>
                         ');

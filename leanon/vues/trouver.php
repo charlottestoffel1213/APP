@@ -1,18 +1,25 @@
-<?php 
+
+<?php
 require "commun.php";
+
 $header = entete($connecte);
 $pied = pied();
 $connexion = connexion($connecte);
 $menu = menu('contacter');
 ob_start();
-include("vues/forum_contenu.php");
 
+include("vues/trouver_contenu.html");
 $contenu= ob_get_clean();
-if (isset($_SESSION['id_type_utilisateur']) AND $_SESSION['id_type_utilisateur'] == 3) {
-	include "gabarit2.php";
-}
-else
-{
+
+if ($connecte){
+	if ($_SESSION['id_type_utilisateur'] == 3) {
+		include "gabarit2.php";
+	}
+	else
+	{
+		include "gabarit.php";
+	}
+}else{
 	include "gabarit.php";
 }
 ?>

@@ -7,12 +7,11 @@
 	$connexion = connexion($connecte);
 	$menu= menu($function);
 
-	$contenu= '
+	ob_start();
 	
-	<h1> Qui sommes nous? </h1>
-	<h2> Lean On, Here for you </h2>';
+	include("vues/contacter_contenu.html");
+	$contenu= ob_get_clean();
 	
-
 	
 	if ($connecte){
 		if ($_SESSION['id_type_utilisateur'] == 3) {

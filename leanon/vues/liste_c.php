@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	</html><link rel="stylesheet" type="text/css" href="/leanon/vues/styles/typo_maintenance.css">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/leanon/vues/styles/typo_maintenance.css">
 </head>
 <body>
 
@@ -16,6 +17,7 @@
 		<th>Ville</th>
 		<th>Code Postal</th>
 		<th>Telephone</th>
+		<th>Accès</th>
 	</tr>
 
 
@@ -49,6 +51,13 @@
 	<td>
 		<p><?= $user['tel']; ?></p>
 	</td>
+	<td>
+		<a href="index.php?cible=maintenance&function=nb_capteur&id=<?=$user['id'] ?>">ACCEDER</a>
+
+		
+		
+	</td>
+
 </tr>
 
 

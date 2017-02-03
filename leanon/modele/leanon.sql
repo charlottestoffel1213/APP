@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 24 Janvier 2017 à 19:10
+-- Généré le :  Ven 03 Février 2017 à 20:58
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -55,6 +55,7 @@ CREATE TABLE `categorie_obj_connectes` (
 --
 
 INSERT INTO `categorie_obj_connectes` (`id`, `nom_categorie`) VALUES
+(4, 'humidite'),
 (2, 'luminosite'),
 (3, 'securite'),
 (1, 'temperature');
@@ -67,119 +68,149 @@ INSERT INTO `categorie_obj_connectes` (`id`, `nom_categorie`) VALUES
 
 CREATE TABLE `chat` (
   `id` int(11) NOT NULL,
-  `id_expediteur` int(11) NOT NULL,
-  `id_destinataire` int(11) NOT NULL,
-  `requette` text NOT NULL,
-  `message` text NOT NULL,
-  `date` datetime NOT NULL
+  `requete` varchar(255) NOT NULL,
+  `id_createur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `chat`
 --
 
-INSERT INTO `chat` (`id`, `id_expediteur`, `id_destinataire`, `requette`, `message`, `date`) VALUES
-(1, 43, 22, '', 'CJSQL', '0000-00-00 00:00:00'),
-(2, 43, 4, '', 'hello\r\n', '0000-00-00 00:00:00'),
-(3, 43, 22, '', 'Bonjour', '0000-00-00 00:00:00'),
-(4, 43, 33, '', 'Bienvenue', '0000-00-00 00:00:00'),
-(5, 43, 33, '', 'Bienvenue', '0000-00-00 00:00:00'),
-(6, 43, 33, '', 'Bienvenue', '0000-00-00 00:00:00'),
-(7, 43, 33, '', 'Bienvenue', '0000-00-00 00:00:00'),
-(8, 43, 33, '', 'Bienvenue', '0000-00-00 00:00:00'),
-(9, 43, 33, '', 'Bienvenue', '0000-00-00 00:00:00'),
-(10, 43, 33, '', 'Bienvenue', '0000-00-00 00:00:00'),
-(11, 43, 33, '', 'Bienvenue', '0000-00-00 00:00:00'),
-(12, 43, 33, '', 'Bienvenue', '0000-00-00 00:00:00'),
-(13, 43, 4, '', 'hello\r\n', '0000-00-00 00:00:00'),
-(14, 43, 33, '', 'Bienvenue', '0000-00-00 00:00:00'),
-(15, 43, 16, '', 'by', '0000-00-00 00:00:00'),
-(16, 43, 16, '', 'nk', '0000-00-00 00:00:00'),
-(17, 43, 33, '', 'Bonjour', '0000-00-00 00:00:00'),
-(18, 44, 33, '', 'hello!', '0000-00-00 00:00:00'),
-(19, 33, 44, '', 'bonjour', '0000-00-00 00:00:00'),
-(20, 33, 28, '', 'csk', '0000-00-00 00:00:00'),
-(21, 43, 32, '', 'hello\r\nmaintenance', '0000-00-00 00:00:00'),
-(22, 43, 33, '', 'hello', '0000-00-00 00:00:00'),
-(23, 43, 33, '', 'hello', '0000-00-00 00:00:00'),
-(24, 43, 33, '', 'bonjour', '0000-00-00 00:00:00'),
-(25, 43, 33, '', 'bonjour', '0000-00-00 00:00:00'),
-(26, 43, 33, '', 'hello maintenance', '0000-00-00 00:00:00'),
-(27, 43, 33, '', 'hello maintenance', '0000-00-00 00:00:00'),
-(28, 43, 33, '', 'bonjour la maintenance', '0000-00-00 00:00:00'),
-(29, 43, 33, '', 'bonjour la maintenance', '0000-00-00 00:00:00'),
-(30, 43, 33, '', 'bonjour la maintenance', '0000-00-00 00:00:00'),
-(31, 43, 33, '', 'hy!', '0000-00-00 00:00:00'),
-(32, 33, 16, '', 'bonjour', '0000-00-00 00:00:00'),
-(33, 33, 44, '', 'marie bonjour', '0000-00-00 00:00:00'),
-(34, 44, 33, '', 'comment vas tu?', '0000-00-00 00:00:00'),
-(35, 43, 33, '', 'bonjour', '0000-00-00 00:00:00'),
-(36, 43, 33, '', 'delphine', '0000-00-00 00:00:00'),
-(37, 33, 44, '', 'Bonjour', '0000-00-00 00:00:00'),
-(38, 33, 44, '', 'Bonjour marie, comment vas tu?', '0000-00-00 00:00:00'),
-(39, 44, 33, '', 'Bonjour,j ai capteur ma salle de bain qui marche plus comment faire?', '0000-00-00 00:00:00'),
-(40, 33, 44, '', 'oui j ai la solution', '0000-00-00 00:00:00'),
-(41, 33, 44, '', 'oui j ai la solution', '0000-00-00 00:00:00'),
-(42, 33, 44, '', 'oui j ai la solution', '0000-00-00 00:00:00'),
-(43, 33, 44, '', 'oui j ai la solution', '0000-00-00 00:00:00'),
-(44, 33, 44, '', 'oui j ai la solution', '0000-00-00 00:00:00'),
-(45, 44, 33, '', 'Bonjour la maintenancecomment allez vous?\r\n', '0000-00-00 00:00:00'),
-(46, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(47, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(48, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(49, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(50, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(51, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(52, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(53, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(54, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(55, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(56, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(57, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(58, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(59, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(60, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(61, 44, 33, '', 'HELLO\r\n', '0000-00-00 00:00:00'),
-(62, 44, 33, 'Un capteur/actionneur est defaillant dans ma maison', 'ja i un probleme avec un capteur dans ma maison!', '0000-00-00 00:00:00'),
-(63, 44, 33, 'Un capteur/actionneur est defaillant dans ma maison', 'ja i un probleme avec un capteur dans ma maison!', '0000-00-00 00:00:00'),
-(64, 44, 33, 'Un capteur/actionneur est defaillant dans ma maison', 'ja i un probleme avec un capteur dans ma maison!', '0000-00-00 00:00:00'),
-(65, 44, 33, 'Un capteur/actionneur est defaillant dans ma maison', 'ja i un probleme avec un capteur dans ma maison!', '0000-00-00 00:00:00'),
-(66, 44, 33, 'Autres problÃ¨mes', 'bonjour', '0000-00-00 00:00:00'),
-(67, 44, 33, 'Autres problÃ¨mes', 'bonjour', '0000-00-00 00:00:00'),
-(68, 44, 33, 'Autres problÃ¨mes', 'bonjour', '0000-00-00 00:00:00'),
-(69, 44, 33, 'Autres problÃ¨mes', 'bonjour', '0000-00-00 00:00:00'),
-(70, 44, 33, 'Autres problÃ¨mes', 'bonjour', '0000-00-00 00:00:00'),
-(71, 44, 33, 'Autres problÃ¨mes', 'bonjour', '0000-00-00 00:00:00'),
-(72, 44, 33, 'Rajouter un capteur/actionneur dans une piÃ¨ce', 'bonjour', '0000-00-00 00:00:00'),
-(73, 33, 44, '', 'marie la plus belle', '0000-00-00 00:00:00'),
-(74, 44, 33, 'Un capteur/actionneur est defaillant dans ma maison', 'hello', '0000-00-00 00:00:00'),
-(75, 44, 33, 'J''ai un problÃ¨me d''affichage avec une donnÃ©e de capteur/actionneur', 'hello', '0000-00-00 00:00:00'),
-(76, 44, 33, 'J''ai un problÃ¨me d''affichage avec une donnÃ©e de capteur/actionneur', 'hello', '0000-00-00 00:00:00'),
-(77, 44, 33, 'J''ai un problÃ¨me d''affichage avec une donnÃ©e de capteur/actionneur', 'hello', '0000-00-00 00:00:00'),
-(78, 44, 33, 'J''ai un problÃ¨me d''affichage avec une donnÃ©e de capteur/actionneur', 'hello', '0000-00-00 00:00:00'),
-(79, 44, 33, 'J''ai un problÃ¨me d''affichage avec une donnÃ©e de capteur/actionneur', 'hello', '0000-00-00 00:00:00'),
-(80, 33, 44, '', 'bonjour', '0000-00-00 00:00:00'),
-(81, 33, 44, '', 'bonjour', '2017-01-13 00:00:00'),
-(82, 33, 44, '', 'bonjour marie coucou', '2017-01-13 00:00:00'),
-(83, 44, 33, 'Autres problÃ¨mes', 'Bonjour', '2017-01-13 00:00:00'),
-(84, 44, 33, 'Autres problÃ¨mes', 'Bonjour', '2017-01-13 00:00:00'),
-(85, 44, 33, 'Autres problÃ¨mes', 'Bonjour', '2017-01-13 00:00:00'),
-(86, 44, 33, 'Autres problÃ¨mes', 'Bonjour', '2017-01-13 00:00:00'),
-(87, 44, 33, 'Autres problÃ¨mes', 'Bonjour', '2017-01-13 00:00:00'),
-(88, 44, 33, 'Autres problÃ¨mes', 'Bonjour', '2017-01-13 00:00:00'),
-(89, 44, 33, 'Autres problÃ¨mes', 'Bonjour', '2017-01-13 00:00:00'),
-(90, 44, 33, 'Autres problÃ¨mes', 'Bonjour', '2017-01-13 00:00:00'),
-(91, 44, 33, 'Autres problÃ¨mes', 'Bonjour', '2017-01-13 00:00:00'),
-(92, 44, 33, 'Rajouter un capteur/actionneur dans une piÃ¨ce', 'Bonjourno', '2017-01-13 00:00:00'),
-(93, 44, 33, 'J''ai un problÃ¨me d''affichage avec une donnÃ©e de capteur/actionneur', 'hello', '2017-01-13 00:00:00'),
-(94, 44, 33, 'Un capteur/actionneur est defaillant dans ma maison', 'hello', '2017-01-13 00:00:00'),
-(95, 33, 44, '', 'hello', '2017-01-13 13:26:40'),
-(96, 33, 44, '', 'bonjour marie', '2017-01-14 11:26:07'),
-(97, 33, 44, '', 'Bonjour hello\r\n', '2017-01-16 16:20:36'),
-(98, 83, 80, '', 'Coucou', '2017-01-22 17:45:29'),
-(99, 61, 83, 'J''ai un problÃ¨me d''affichage avec une donnÃ©e de capteur/actionneur', 'aidez moi', '2017-01-22 17:49:59'),
-(100, 83, 61, '', 'Je vous Ã©coute ', '2017-01-22 17:50:43'),
-(101, 61, 83, 'Autres problÃ¨mes', 'non', '2017-01-22 17:54:10');
+INSERT INTO `chat` (`id`, `requete`, `id_createur`) VALUES
+(1, 'J''ai un problÃ¨me d''affichage avec une donnÃ©e de capteur/actionneur', 0),
+(2, 'Autres problÃ¨mes', 61),
+(3, 'Rajouter un capteur/actionneur dans une piÃ¨ce', 61),
+(4, 'J''ai un problÃ¨me d''affichage avec une donnÃ©e de capteur/actionneur', 61);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `chat_msg`
+--
+
+CREATE TABLE `chat_msg` (
+  `id` int(11) NOT NULL,
+  `id_expediteur` int(11) NOT NULL,
+  `id_destinataire` int(11) NOT NULL,
+  `id_chat` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `chat_msg`
+--
+
+INSERT INTO `chat_msg` (`id`, `id_expediteur`, `id_destinataire`, `id_chat`, `message`, `date`) VALUES
+(1, 43, 22, 0, 'CJSQL', '0000-00-00 00:00:00'),
+(2, 43, 4, 0, 'hello\r\n', '0000-00-00 00:00:00'),
+(3, 43, 22, 0, 'Bonjour', '0000-00-00 00:00:00'),
+(4, 43, 33, 0, 'Bienvenue', '0000-00-00 00:00:00'),
+(5, 43, 33, 0, 'Bienvenue', '0000-00-00 00:00:00'),
+(6, 43, 33, 0, 'Bienvenue', '0000-00-00 00:00:00'),
+(7, 43, 33, 0, 'Bienvenue', '0000-00-00 00:00:00'),
+(8, 43, 33, 0, 'Bienvenue', '0000-00-00 00:00:00'),
+(9, 43, 33, 0, 'Bienvenue', '0000-00-00 00:00:00'),
+(10, 43, 33, 0, 'Bienvenue', '0000-00-00 00:00:00'),
+(11, 43, 33, 0, 'Bienvenue', '0000-00-00 00:00:00'),
+(12, 43, 33, 0, 'Bienvenue', '0000-00-00 00:00:00'),
+(13, 43, 4, 0, 'hello\r\n', '0000-00-00 00:00:00'),
+(14, 43, 33, 0, 'Bienvenue', '0000-00-00 00:00:00'),
+(15, 43, 16, 0, 'by', '0000-00-00 00:00:00'),
+(16, 43, 16, 0, 'nk', '0000-00-00 00:00:00'),
+(17, 43, 33, 0, 'Bonjour', '0000-00-00 00:00:00'),
+(18, 44, 33, 0, 'hello!', '0000-00-00 00:00:00'),
+(19, 33, 44, 0, 'bonjour', '0000-00-00 00:00:00'),
+(20, 33, 28, 0, 'csk', '0000-00-00 00:00:00'),
+(21, 43, 32, 0, 'hello\r\nmaintenance', '0000-00-00 00:00:00'),
+(22, 43, 33, 0, 'hello', '0000-00-00 00:00:00'),
+(23, 43, 33, 0, 'hello', '0000-00-00 00:00:00'),
+(24, 43, 33, 0, 'bonjour', '0000-00-00 00:00:00'),
+(25, 43, 33, 0, 'bonjour', '0000-00-00 00:00:00'),
+(26, 43, 33, 0, 'hello maintenance', '0000-00-00 00:00:00'),
+(27, 43, 33, 0, 'hello maintenance', '0000-00-00 00:00:00'),
+(28, 43, 33, 0, 'bonjour la maintenance', '0000-00-00 00:00:00'),
+(29, 43, 33, 0, 'bonjour la maintenance', '0000-00-00 00:00:00'),
+(30, 43, 33, 0, 'bonjour la maintenance', '0000-00-00 00:00:00'),
+(31, 43, 33, 0, 'hy!', '0000-00-00 00:00:00'),
+(32, 33, 16, 0, 'bonjour', '0000-00-00 00:00:00'),
+(33, 33, 44, 0, 'marie bonjour', '0000-00-00 00:00:00'),
+(34, 44, 33, 0, 'comment vas tu?', '0000-00-00 00:00:00'),
+(35, 43, 33, 0, 'bonjour', '0000-00-00 00:00:00'),
+(36, 43, 33, 0, 'delphine', '0000-00-00 00:00:00'),
+(37, 33, 44, 0, 'Bonjour', '0000-00-00 00:00:00'),
+(38, 33, 44, 0, 'Bonjour marie, comment vas tu?', '0000-00-00 00:00:00'),
+(39, 44, 33, 0, 'Bonjour,j ai capteur ma salle de bain qui marche plus comment faire?', '0000-00-00 00:00:00'),
+(40, 33, 44, 0, 'oui j ai la solution', '0000-00-00 00:00:00'),
+(41, 33, 44, 0, 'oui j ai la solution', '0000-00-00 00:00:00'),
+(42, 33, 44, 0, 'oui j ai la solution', '0000-00-00 00:00:00'),
+(43, 33, 44, 0, 'oui j ai la solution', '0000-00-00 00:00:00'),
+(44, 33, 44, 0, 'oui j ai la solution', '0000-00-00 00:00:00'),
+(45, 44, 33, 0, 'Bonjour la maintenancecomment allez vous?\r\n', '0000-00-00 00:00:00'),
+(46, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(47, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(48, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(49, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(50, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(51, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(52, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(53, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(54, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(55, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(56, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(57, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(58, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(59, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(60, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(61, 44, 33, 0, 'HELLO\r\n', '0000-00-00 00:00:00'),
+(62, 44, 33, 0, 'ja i un probleme avec un capteur dans ma maison!', '0000-00-00 00:00:00'),
+(63, 44, 33, 0, 'ja i un probleme avec un capteur dans ma maison!', '0000-00-00 00:00:00'),
+(64, 44, 33, 0, 'ja i un probleme avec un capteur dans ma maison!', '0000-00-00 00:00:00'),
+(65, 44, 33, 0, 'ja i un probleme avec un capteur dans ma maison!', '0000-00-00 00:00:00'),
+(66, 44, 33, 0, 'bonjour', '0000-00-00 00:00:00'),
+(67, 44, 33, 0, 'bonjour', '0000-00-00 00:00:00'),
+(68, 44, 33, 0, 'bonjour', '0000-00-00 00:00:00'),
+(69, 44, 33, 0, 'bonjour', '0000-00-00 00:00:00'),
+(70, 44, 33, 0, 'bonjour', '0000-00-00 00:00:00'),
+(71, 44, 33, 0, 'bonjour', '0000-00-00 00:00:00'),
+(72, 44, 33, 0, 'bonjour', '0000-00-00 00:00:00'),
+(73, 33, 44, 0, 'marie la plus belle', '0000-00-00 00:00:00'),
+(74, 44, 33, 0, 'hello', '0000-00-00 00:00:00'),
+(75, 44, 33, 0, 'hello', '0000-00-00 00:00:00'),
+(76, 44, 33, 0, 'hello', '0000-00-00 00:00:00'),
+(77, 44, 33, 0, 'hello', '0000-00-00 00:00:00'),
+(78, 44, 33, 0, 'hello', '0000-00-00 00:00:00'),
+(79, 44, 33, 0, 'hello', '0000-00-00 00:00:00'),
+(80, 33, 44, 0, 'bonjour', '0000-00-00 00:00:00'),
+(81, 33, 44, 0, 'bonjour', '2017-01-13 00:00:00'),
+(82, 33, 44, 0, 'bonjour marie coucou', '2017-01-13 00:00:00'),
+(83, 44, 33, 0, 'Bonjour', '2017-01-13 00:00:00'),
+(84, 44, 33, 0, 'Bonjour', '2017-01-13 00:00:00'),
+(85, 44, 33, 0, 'Bonjour', '2017-01-13 00:00:00'),
+(86, 44, 33, 0, 'Bonjour', '2017-01-13 00:00:00'),
+(87, 44, 33, 0, 'Bonjour', '2017-01-13 00:00:00'),
+(88, 44, 33, 0, 'Bonjour', '2017-01-13 00:00:00'),
+(89, 44, 33, 0, 'Bonjour', '2017-01-13 00:00:00'),
+(90, 44, 33, 0, 'Bonjour', '2017-01-13 00:00:00'),
+(91, 44, 33, 0, 'Bonjour', '2017-01-13 00:00:00'),
+(92, 44, 33, 0, 'Bonjourno', '2017-01-13 00:00:00'),
+(93, 44, 33, 0, 'hello', '2017-01-13 00:00:00'),
+(94, 44, 33, 0, 'hello', '2017-01-13 00:00:00'),
+(95, 33, 44, 0, 'hello', '2017-01-13 13:26:40'),
+(96, 33, 44, 0, 'bonjour marie', '2017-01-14 11:26:07'),
+(97, 33, 44, 0, 'Bonjour hello\r\n', '2017-01-16 16:20:36'),
+(98, 83, 80, 0, 'Coucou', '2017-01-22 17:45:29'),
+(99, 61, 83, 0, 'aidez moi', '2017-01-22 17:49:59'),
+(100, 83, 61, 0, 'Je vous Ã©coute ', '2017-01-22 17:50:43'),
+(101, 61, 83, 0, 'non', '2017-01-22 17:54:10'),
+(102, 61, 83, 0, 'Help', '2017-02-02 15:27:29'),
+(103, 61, 83, 3, 'nop', '2017-02-02 16:00:20'),
+(104, 61, 83, 0, 'plz', '2017-02-02 16:10:13'),
+(105, 83, 61, 0, 'Pas de soucis', '2017-02-02 16:12:10'),
+(106, 61, 83, 1, 'test', '2017-02-02 17:10:58'),
+(107, 61, 83, 2, 'deuxieme', '2017-02-02 17:20:33'),
+(108, 61, 83, 3, 'autre', '2017-02-02 17:37:25'),
+(109, 61, 83, 4, 'aide please', '2017-02-02 17:48:38');
 
 -- --------------------------------------------------------
 
@@ -278,7 +309,9 @@ INSERT INTO `maison` (`id`, `id_type_maison`, `adresse`, `postal`, `ville`, `cod
 (25, 2, '10 rue de vanve', 83478, 'Issy les moulineaux', '0'),
 (26, 2, '12 rue notre dame des champs', 75006, 'Paris', '7cc9932eb3b8569777121dd589989527'),
 (27, 2, '12rue', 75, 'Paris', '415acf9f5104e76405b7cc98c8e93bbe'),
-(28, 2, '10 rue', 75, 'Paris', '39563b102fe4b7fbbfdeeb0c072bc913');
+(28, 2, '10 rue', 75, 'Paris', '39563b102fe4b7fbbfdeeb0c072bc913'),
+(29, 2, 'bonjour', 75007, 'paris', '99fc4f112b3bfe656151b1a9d320194c'),
+(30, 2, 'ok', 98, 'ko', 'e4fac2ee3c9c50e0f67dd98ac09ddc6c');
 
 -- --------------------------------------------------------
 
@@ -331,7 +364,15 @@ INSERT INTO `messages` (`id`, `auteur`, `date`, `message`, `id_message_d'origine
 (38, '61', '2017-01-12 10:34:14', 'Bonjour', '', 29),
 (39, '61', '2017-01-14 00:10:02', 'test\r\n', '', 29),
 (40, '61', '2017-01-16 16:49:03', 'coucou\r\n', '', 29),
-(41, '80', '2017-01-20 21:56:08', 'ok', '', 29);
+(41, '80', '2017-01-20 21:56:08', 'ok', '', 29),
+(42, '61', '2017-02-01 19:51:52', 'Je suis la', '', 18),
+(43, '61', '2017-02-01 19:57:03', 'Coucou', '', 28),
+(44, '61', '2017-02-01 19:57:07', 'Coucou', '', 28),
+(45, '61', '2017-02-01 19:57:32', 'Coucou', '', 28),
+(46, '61', '2017-02-01 19:57:43', 'lol\r\n', '', 29),
+(47, '61', '2017-02-01 19:59:27', 'Coucou\r\n', '', 26),
+(48, '61', '2017-02-01 20:05:16', 'help', '', 30),
+(49, '61', '2017-02-01 20:21:16', 'oups', '', 29);
 
 -- --------------------------------------------------------
 
@@ -344,26 +385,21 @@ CREATE TABLE `mode_obj` (
   `nom_mode` varchar(100) NOT NULL,
   `temperature` int(11) NOT NULL,
   `luminosite` int(11) NOT NULL,
-  `securite` int(11) NOT NULL
+  `securite` int(11) NOT NULL,
+  `id_maison` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `mode_obj`
 --
 
-INSERT INTO `mode_obj` (`id`, `nom_mode`, `temperature`, `luminosite`, `securite`) VALUES
-(1, 'mode_nuit', 18, 0, 1),
-(2, 'mode_jour', 20, 0, 0);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `mode_obj_pers`
---
-
-CREATE TABLE `mode_obj_pers` (
-  `ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `mode_obj` (`id`, `nom_mode`, `temperature`, `luminosite`, `securite`, `id_maison`) VALUES
+(1, 'mode_nuit', 18, 0, 1, 0),
+(2, 'mode_jour', 20, 0, 0, 0),
+(3, 'mode_test', 35, 1, 0, 1),
+(4, 'mode test 2', 40, 0, 1, 1),
+(5, 'Lum on ', 34, 1, 0, 1),
+(6, 'ok', 40, 0, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -389,31 +425,44 @@ CREATE TABLE `obj_connectes` (
   `nom` varchar(255) NOT NULL,
   `id_type_objets_connectes` int(11) NOT NULL,
   `id_categorie_objets_connectes` int(11) NOT NULL,
-  `id_piece` varchar(255) NOT NULL,
+  `id_piece` int(11) NOT NULL,
   `batterie` int(11) NOT NULL,
   `donnee_demandee` int(11) NOT NULL,
   `donnee_recue` varchar(255) NOT NULL,
   `seuil_erreur` int(11) NOT NULL,
   `description` varchar(255) NOT NULL,
   `frequence` date NOT NULL,
-  `etat` varchar(50) NOT NULL
+  `etat` varchar(50) NOT NULL,
+  `code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `obj_connectes`
 --
 
-INSERT INTO `obj_connectes` (`id`, `nom`, `id_type_objets_connectes`, `id_categorie_objets_connectes`, `id_piece`, `batterie`, `donnee_demandee`, `donnee_recue`, `seuil_erreur`, `description`, `frequence`, `etat`) VALUES
-(1, 'temp1', 0, 1, '', 0, 0, '', 0, '', '0000-00-00', 'fonctionne'),
-(2, 'temp2', 2, 1, '1', 0, 0, '30', 0, '', '0000-00-00', 'disfonctionnement'),
-(3, 'temp3', 2, 1, '2', 0, 0, '30', 0, '', '0000-00-00', 'fonctionne'),
-(4, 'secu1', 0, 3, '1', 0, 0, '0', 0, '', '0000-00-00', 'fonctionne'),
-(5, 'lumi1', 0, 2, '1', 0, 0, '0', 0, '', '0000-00-00', 'fonctionne'),
-(6, 'lumi2', 2, 2, '2', 0, 0, '0', 0, '', '0000-00-00', 'fonctionne'),
-(7, 'secu2', 2, 3, '2', 0, 0, '0', 0, '', '0000-00-00', 'fonctionne'),
-(8, 'secu3', 2, 3, '1', 0, 0, '0', 0, '', '0000-00-00', 'fonctionne'),
-(9, 'temp4', 2, 1, '4', 0, 0, '10', 0, '', '0000-00-00', ''),
-(10, 'idriss', 0, 0, '', 0, 0, '', 0, '', '0000-00-00', '');
+INSERT INTO `obj_connectes` (`id`, `nom`, `id_type_objets_connectes`, `id_categorie_objets_connectes`, `id_piece`, `batterie`, `donnee_demandee`, `donnee_recue`, `seuil_erreur`, `description`, `frequence`, `etat`, `code`) VALUES
+(1, 'temp1', 0, 1, 0, 0, 0, '', 0, '', '0000-00-00', 'fonctionne', 0),
+(2, 'temp2', 2, 1, 1, 0, 20, '34', 1, '', '0000-00-00', 'dysfonctionnement', 0),
+(3, 'temp3', 2, 1, 2, 0, 0, '34', 3, '', '0000-00-00', 'dysfonctionnement', 0),
+(4, 'secu1', 0, 3, 1, 0, 0, '0', 0, '', '0000-00-00', 'fonctionne', 0),
+(5, 'lumi1', 0, 2, 1, 0, 0, '1', 0, '', '0000-00-00', 'dysfonctionnement', 0),
+(6, 'lumi2', 2, 2, 2, 0, 0, '1', 0, '', '0000-00-00', 'dysfonctionnement', 0),
+(7, 'secu2', 2, 3, 2, 0, 0, '0', 0, '', '0000-00-00', 'fonctionne', 0),
+(8, 'secu3', 2, 3, 1, 0, 0, '0', 0, '', '0000-00-00', 'fonctionne', 0),
+(9, 'temp4', 2, 1, 4, 0, 0, '40', 0, '', '0000-00-00', 'dysfonctionnement', 0),
+(10, 'idriss', 0, 0, 0, 0, 0, '', 0, '', '0000-00-00', '', 0),
+(11, 'secu1', 1, 3, 27, 0, 0, '0', 0, '', '0000-00-00', 'fonctionne', 0),
+(12, 'secu2', 1, 3, 27, 0, 0, '0', 0, '', '0000-00-00', 'fonctionne', 0),
+(13, 'lumi1', 0, 2, 27, 0, 0, '1', 0, '', '0000-00-00', 'disfonctionnement', 0),
+(14, 'lumi2', 0, 2, 27, 0, 0, '1', 0, '', '0000-00-00', 'disfonctionnement', 0),
+(15, 'humi1', 1, 4, 27, 0, 0, '30', 0, '', '0000-00-00', '', 0),
+(16, 'humi2', 1, 4, 28, 0, 0, '21', 0, '', '0000-00-00', '', 0),
+(17, 'temp1', 1, 1, 27, 0, 0, '34', 0, '', '0000-00-00', '', 0),
+(18, 'temp2', 1, 1, 27, 0, 0, '34', 0, '', '0000-00-00', '', 0),
+(19, 'temp3', 0, 0, 28, 0, 0, '6', 0, '', '0000-00-00', '', 0),
+(20, 'humidité_ga1', 1, 4, 1, 0, 0, '30', 0, '', '0000-00-00', '', 0),
+(21, 'humidité_ga2', 1, 4, 2, 0, 0, '60', 0, '', '0000-00-00', '', 0),
+(22, 'lampe de chevet ', 0, 2, 1, 0, 0, '1', 0, '', '0000-00-00', 'dysfonctionnement', 1608);
 
 -- --------------------------------------------------------
 
@@ -470,7 +519,11 @@ INSERT INTO `pieces` (`id`, `nom`, `id_maison`) VALUES
 (23, 'Salle de bain', 27),
 (24, 'Cuisine', 28),
 (25, 'Chambre1', 28),
-(26, 'Chambre de MÃ©mÃ©', 28);
+(26, 'Chambre de MÃ©mÃ©', 28),
+(27, 'cuisinette', 29),
+(29, 'Cuisine', 30),
+(30, 'Chambre1', 30),
+(31, 'Salon', 30);
 
 -- --------------------------------------------------------
 
@@ -494,7 +547,8 @@ INSERT INTO `sujet_du_forum` (`id`, `auteur_du_sujet`, `id_categorie`, `nombre_d
 (18, '4', 2, 0, 'Besoin d''aide'),
 (26, '23', 2, 0, 'Qu''en pensez vous?'),
 (28, '61', 1, 0, 'Bonjour'),
-(29, '61', 2, 0, 'Je n''arrive pas a relier mon compte Ã  ma maison');
+(29, '61', 2, 0, 'Je n''arrive pas a relier mon compte Ã  ma maison'),
+(30, '61', 1, 0, 'Je ne sais pas comment lire les donnÃ©es');
 
 -- --------------------------------------------------------
 
@@ -607,7 +661,7 @@ CREATE TABLE `utilisateur` (
 INSERT INTO `utilisateur` (`id`, `username`, `mail`, `hash_validation`, `password`, `nom`, `prenom`, `naissance`, `adresse`, `ville`, `postal`, `tel`, `id_type_utilisateur`, `id_principal`, `avatar`, `date_inscription`) VALUES
 (54, 'Gaga3', 'gaga@gmail.com', '', '811584043b844704c9bb9a6e99dd05d3', '', '', '0000-00-00', '', '', '', '', 2, 52, '', '0000-00-00'),
 (55, 'quentin', 'quentin', '', 'c7f413a4f6f4a658c24f0a437666089e', 'Hugon', '', '0000-00-00', '', '', '', '', 1, 0, '', '0000-00-00'),
-(61, 'GaÃ«lle', 'sou.gaelle@gmail.com', '', '59b0cde44fd9215416b0200f99efafc8', 'Svh', 'Gaga', '0000-00-00', '17 rue', 'Saint Thib', '77400', '06 02', 1, 0, '', '0000-00-00'),
+(61, 'GaÃ«lle', 'sou.gaelle@gmail.com', '', '811584043b844704c9bb9a6e99dd05d3', 'Svh', 'Gaga', '0000-00-00', '17 rue', 'Saint Thib', '77400', '06 02 34', 1, 0, '', '0000-00-00'),
 (62, 'Alex', 'alex@gmail.com', '', '534b44a19bf18d20b71ecc4eb77c572f', '', '', '0000-00-00', '', '', '', '', 1, 61, '', '0000-00-00'),
 (63, 'Kevin', 'Kevin', '', 'f1cd318e412b5f7226e5f377a9544ff7', '', '', '0000-00-00', '', '', '', '', 2, 61, '', '0000-00-00'),
 (64, 'Hugo', 'hugo@gmail.com', '', 'f1f58e8c06b2a61ce13e0c0aa9473a72', '', '', '0000-00-00', '', '', '', '', 1, 0, '', '0000-00-00'),
@@ -624,7 +678,12 @@ INSERT INTO `utilisateur` (`id`, `username`, `mail`, `hash_validation`, `passwor
 (83, 'maintenance', 'maintenance@gmail.com', '', '57cb773ae7a82c8c8aae12fa8f8d7abd', 'Maintenance', 'Reparateur', '0000-00-00', '', '', '', '', 3, 0, '', '2017-01-20'),
 (84, 'Test2', 'test', '', '098f6bcd4621d373cade4e832627b4f6', '', '', '0000-00-00', '', '', '', '', 1, 0, '', '2017-01-24'),
 (85, 'Gaelle5', 'gaelle', '', '8180a8725f728c45aaafb3ad3c112c08', '', '', '0000-00-00', '', '', '', '', 1, 0, '', '2017-01-24'),
-(86, 'Pepe2', 'pepe', '', '926e27eecdbc7a18858b3798ba99bddd', '', '', '0000-00-00', '', '', '', '', 1, 0, '', '2017-01-24');
+(86, 'Pepe2', 'pepe', '', '926e27eecdbc7a18858b3798ba99bddd', '', '', '0000-00-00', '', '', '', '', 1, 0, '', '2017-01-24'),
+(87, 'jb', 'jb', '', 'c4a6c07a8a2d7c804a5776d9d039428a', '', '', '0000-00-00', '', '', '', '', 1, 0, '', '2017-01-26'),
+(92, 'Gaelle_sec', 'sou', '', '811584043b844704c9bb9a6e99dd05d3', '', '', '0000-00-00', '', '', '', '', 1, 61, '', '2017-01-31'),
+(93, 'test_prinp', 'tt', '', '098f6bcd4621d373cade4e832627b4f6', '', '', '0000-00-00', '', '', '', '', 1, 0, '', '2017-01-31'),
+(94, 'Gaelle_secondaire', 'gaelle_sec@gmail.com', '', '811584043b844704c9bb9a6e99dd05d3', '', '', '0000-00-00', '', '', '', '', 2, 61, '', '2017-02-03'),
+(95, 'okko', 'ok@gmail.com', '', '444bcb3a3fcf8389296c49467f27e1d6', '', '', '0000-00-00', '', '', '', '', 1, 0, '', '2017-02-03');
 
 -- --------------------------------------------------------
 
@@ -648,7 +707,12 @@ INSERT INTO `utilisateurs_maison` (`id`, `id_utilisateurs`, `id_maison`) VALUES
 (3, 81, 2),
 (4, 82, 2),
 (5, 83, 2),
-(6, 86, 28);
+(6, 86, 28),
+(7, 87, 29),
+(8, 92, 1),
+(9, 93, 30),
+(10, 94, 1),
+(11, 95, 30);
 
 -- --------------------------------------------------------
 
@@ -695,7 +759,16 @@ ALTER TABLE `categorie_obj_connectes`
 -- Index pour la table `chat`
 --
 ALTER TABLE `chat`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_createur` (`id_createur`);
+
+--
+-- Index pour la table `chat_msg`
+--
+ALTER TABLE `chat_msg`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_expediteur` (`id_expediteur`,`id_destinataire`),
+  ADD KEY `id_chat` (`id_chat`);
 
 --
 -- Index pour la table `controle`
@@ -745,7 +818,8 @@ ALTER TABLE `messages`
 -- Index pour la table `mode_obj`
 --
 ALTER TABLE `mode_obj`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_maison` (`id_maison`);
 
 --
 -- Index pour la table `notifications`
@@ -853,12 +927,17 @@ ALTER TABLE `categorie_forum`
 -- AUTO_INCREMENT pour la table `categorie_obj_connectes`
 --
 ALTER TABLE `categorie_obj_connectes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `chat_msg`
+--
+ALTER TABLE `chat_msg`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 --
 -- AUTO_INCREMENT pour la table `controle`
 --
@@ -883,17 +962,17 @@ ALTER TABLE `habite`
 -- AUTO_INCREMENT pour la table `maison`
 --
 ALTER TABLE `maison`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT pour la table `mode_obj`
 --
 ALTER TABLE `mode_obj`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `notifications`
 --
@@ -903,7 +982,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT pour la table `obj_connectes`
 --
 ALTER TABLE `obj_connectes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT pour la table `options`
 --
@@ -913,12 +992,12 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT pour la table `pieces`
 --
 ALTER TABLE `pieces`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT pour la table `sujet_du_forum`
 --
 ALTER TABLE `sujet_du_forum`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT pour la table `type_maison`
 --
@@ -943,12 +1022,12 @@ ALTER TABLE `type_utilisateurs`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 --
 -- AUTO_INCREMENT pour la table `utilisateurs_maison`
 --
 ALTER TABLE `utilisateurs_maison`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `utilisateurs_messages`
 --

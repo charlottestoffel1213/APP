@@ -1,8 +1,22 @@
 table {
     border-collapse: collapse;
 }
+table.chat{
+	width : 100%;
+	margin-top : 15px;
+	margin-bottom : 15px;
+	text-aligh : justify;
+}
+table.liste_cap{
+	width : 70%;
+	margin : auto;
+	margin-top : 15px;
+}
 th.case {
   width: 50px;
+}
+th.liste_etat{
+	width : 120px;
 }
 table, th, td {
     border: 1px solid black;
@@ -12,7 +26,7 @@ table {
   width: 100%;
 }
 table.liste{
-  width: 60%;
+  width: 100%;
   padding-right: 40px;
 }
 
@@ -27,12 +41,21 @@ td.check{
 }
 td {
 
-  vertical-align: bottom;
+  vertical-align: middle;
   text-align: left;
 }
 th, td {
     padding: 10px;
 }
 
+td.switch {
+	padding-left : 23px;
+}
+
 tr:nth-child(even) {background-color: #D8E4EC}
 tr {height: 15px;}
+
+td.message{
+	width : 70%;
+	text-aligh : justify;
+}]

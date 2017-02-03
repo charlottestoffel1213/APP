@@ -5,7 +5,7 @@ require "commun.php";
 	$connexion = connexion($connecte);
 	$menu = menu('contacter');
 	ob_start();
-	include("controleurs/forum_addsuj_c.php");
+	include("vues/forum_addsuj_contenu.php");
 
 	$contenu= ob_get_clean();
 	if ($_SESSION['id_type_utilisateur'] == 3) {

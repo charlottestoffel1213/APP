@@ -13,8 +13,8 @@
 	<h1> Boutique </h1> 
 	<h2><div align="center"> Bienvenue sur l\'espace commercial de Lean On</div> </h2>
 	<div id="case">
-	<div class="boite offres"><a href ="http://my-domotique.com/store/22-packs-domotique">Nos offres</a></div>
-	<div class="boite produit"><a href ="http://my-domotique.com/store/19_aeotec">Produits conseillés</a></div>
+	<div class="boite offres"><a>Nos offres</a></div>
+	<div class="boite produit"><a>Produits conseillés</a></div>
 	
 	</body>';
 	
