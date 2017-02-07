@@ -521,6 +521,7 @@ if(!isset($_GET['function']) || $_GET['function'] == '') {
     	$content = 'mode_affichage';
     	//Code pour afficher le contenu de chaque mode 
     	if(isset($_GET['mode'])){
+    		$_GET['mode']= htmlspecialchars($_GET['mode']);
     		$info = selection($bdd,'mode_obj','*','id',$_GET['mode']);
     		$info = $info->fetch();
     		$name = $info['nom_mode'];
