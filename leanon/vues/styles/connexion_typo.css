@@ -351,7 +351,7 @@ fieldset{
 .mode {
 	display : block;
 	padding : 10px;
-	margin : auto;
+	margin-left : 25%;
 	margin-bottom : 13px;
 	width : 50%;
 	transition:all 0.3s ease;
@@ -381,7 +381,6 @@ fieldset{
 	color : #5b84a4;
 	font:bold;
 	font-size : 50px;
-	border-radius:50%;
 	border: none;
 	background : white;
 	width:70px;
@@ -447,4 +446,39 @@ td {
 .liste_mode{
 	text-align : left;
 	width : 100%;
+}
+
+.info_mode{
+	border-radius: 50%;
+	font-size : 20px;
+	color : #5b84a4;
+	border: none;
+	background : white;
+	margin-left : 10px;
+	padding : 0;
+}
+.block_mode{
+	display : flex;
+}
+.img_info{
+	width : 30px;
+	height : 30px;
+	margin-left : 10px;
+	padding-top : 8px;
+}
+.info_mode:hover {
+	cursor : pointer;
+}
+.aff_mode {
+	text-align : center;
+	font-size : 15px;
+	margin-top : 10%;
+}
+.supprimer_mode {
+	display : block;
+	width : 50%;
+	margin : auto;
+	text-align : center;
+	margin-bottom : 50px;
+	margin-top : 20px;
 }

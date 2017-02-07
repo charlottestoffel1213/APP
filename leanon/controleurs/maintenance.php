@@ -145,7 +145,7 @@ if($function == "accueil") {
 	$content = 'ajout_client';
 	$rand = '';
 	
-	if (isset($_POST['submit'])){
+	if (isset($_POST['submit']) AND isset($_POST['check'])){
 		$_POST['adresse'] = htmlspecialchars($_POST['adresse']);
 		$_POST['postal'] = htmlspecialchars($_POST['postal']);
 		$_POST['ville'] = htmlspecialchars($_POST['ville']);
@@ -164,9 +164,9 @@ if($function == "accueil") {
 						'id_type_maison'=> 2);
 		$table = 'maison';
 		$retour = insertion($bdd,$values,$table);
-		$last_id= $bdd->lastInsertId(); /*Recupere le dernier id inseré*/
+		$last_id= $bdd->lastInsertId(); /*Recupere le dernier id inserÃ©*/
 		
-		//Pour chaque pièce choisie, elle est associé a la maison qui vient d'etre inserer
+		//Pour chaque pièce choisie, elle est associÃ© a la maison qui vient d'etre inserer
 		
 		foreach ($_POST['check'] as $element) 
 		{
@@ -175,6 +175,8 @@ if($function == "accueil") {
 			$stm = insertion($bdd,$values,$table);
 		}
 		
+	} elseif(isset($_POST['submit']) AND !isset($_POST['check'])) {
+		$alerte = 'Veuillez completer tous les champs!';
 	}
 		
 	
@@ -210,15 +212,18 @@ if($function == "accueil") {
         				$id_p=$_POST['piece'];
         			
         				$code=$_POST['id_cap'];
-        				$query = $bdd->prepare('SELECT count(*) as nb FROM obj_connectes JOIN pieces ON pieces.id=obj_connectes.id_piece  WHERE obj_connectes.nom  =?  and  obj_connectes.id_piece= ?  and pieces.id_maison =  ?');
-        				$query->execute(array($_POST['nom_cap'],$id_p=$_POST['piece'],$maison));
+        				if (!isset($id_p)){
+        					$alerte5 = 'Pour ajouter un capteur il faut d\'abord ajouter une pièce';
+        				}
+        				$query = $bdd->prepare('SELECT count(*) as nb FROM obj_connectes JOIN pieces ON pieces.id=obj_connectes.id_piece  WHERE obj_connectes.nom  =? and pieces.id_maison =  ?');
+        				$query->execute(array($_POST['nom_cap'],$maison));
         		 	
 
-            			$requete = $query->fetch(); // on parcours ligne par ligne l'ensemble de la base donnée
+            			$requete = $query->fetch(); // on parcours ligne par ligne l'ensemble de la base donnÃ©e
             			if (isset($requete['nb']) && $requete['nb'] != 0) 
             			{
-                		$alerte = 'Ce nom de capteur a déja été utilisé';
-               			 echo $alerte . '<br/>'; // on renvoie l'erreur
+                		$alerte1 = 'Ce nom de capteur a dÃ©j&agrave; Ã©tÃ© utilisÃ©';
+               			
             			} 
             		
 
@@ -226,23 +231,44 @@ if($function == "accueil") {
             			else {
             			$code=$_POST['id_cap'];
             			$query =$bdd->prepare( 'SELECT count(*) as nb FROM obj_connectes JOIN pieces ON pieces.id=obj_connectes.id_piece  WHERE obj_connectes.code= ? and pieces.id_maison=? ');
-            		 	$query->execute(array($id_p=$_POST['id_cap'],$maison)); 
-            			$requete = $query->fetch(); // on parcours ligne par ligne l'ensemble de la base donnée
-            				if (isset($requete['nb']) && $requete['nb'] != 0) 
+            		 	$query->execute(array($code,$maison)); 
+            			$requete = $query->fetch(); // on parcours ligne par ligne l'ensemble de la base donnÃ©e
+            				if (isset($requete['nb']) && $requete['nb'] !=0) 
             				{
-                				$alerte = 'Ce capteur a déja été rentré';
-               					 echo $alerte . '<br/>'; // on renvoie l'erreur
+                				$alerte2 = 'Ce capteur a dÃ©ja Ã©tÃ© rentrÃ©. ';
+               					
             				} 
-            				else{
+            			$query2 =$bdd->prepare( 'SELECT id FROM obj_connectes WHERE code = ? ');
+            		 	$query2->execute(array($code)); 
+            			$requete2 = $query2->fetch(); // on parcours ligne par ligne l'ensemble de la base donnÃ©e
+            				if (!isset($requete2['id'])){
+            					$alerte3 = 'Code non valide';
+               					
+            				}
+            			$query4 =$bdd->prepare('SELECT id_piece FROM obj_connectes WHERE code= ? ');
+            			$query4->execute(array($code)); 
+            			$requete4 = $query4->fetch();		
+            				if ($requete4['id_piece']!=0){
+            					$alerte4 = 'Ce capteur n\'est pas disponible';
+               			
+            				}
+            				if ($requete4['id_piece'] == 0  and isset($requete2['id'])) {
             					
-            								$cate = htmlspecialchars($_POST['categorie']);
+            								
 		            						$nom = htmlspecialchars($_POST['nom_cap']);
 		            						$code = htmlspecialchars($_POST['id_cap']);
 		            						$id_p=htmlspecialchars($_POST['piece']);
 
-				                		$values = array('nom' => $nom, 'code' => $code, 'id_piece' => $id_p,'id_categorie_objets_connectes' =>$cate);
-				                		$table = 'obj_connectes';
-				                		$inscription = insertion($bdd, $values, $table);
+				                		
+				                		
+				                		$query3 = $bdd->prepare('UPDATE obj_connectes SET nom = :nom , id_piece = :id_piece WHERE code = :code');
+										
+										$query3 ->execute(array(
+										'nom' => $nom,
+										'id_piece' => $id_p,
+										'code' => $code));
+										echo 'Ajout du capteur effectuÃ©';
+
 				                		include("modele/obj_connectes.php");
 				                		
 				                			
@@ -252,9 +278,7 @@ if($function == "accueil") {
 		        		 			}
         				}
         			}
-} elseif($function == "trouver") {
-	$content = "trouver";
-}
+}		
 	
 
 

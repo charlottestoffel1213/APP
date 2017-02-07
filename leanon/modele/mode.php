@@ -33,3 +33,10 @@ function modifier_mode($newnom,$temp,$lum,$secu,$nom){
 	$req = $bdd-> prepare('UPDATE mode_obj SET nom_mode = :newnom, temperature = :temp, luminosite = :lum, securite = :secu WHERE nom_mode= :nom');
 	$req -> execute(array('newnom'=>$newnom,'temp'=>$temp,'lum'=>$lum,'secu'=>$secu,'nom'=>$nom));
 }
+
+function supprimer_mode ($nom){
+	global $bdd, $_SESSION;
+	
+	$req = $bdd->prepare('DELETE FROM mode_obj WHERE nom_mode = :nom AND id_maison = :id');
+	$req -> execute(array('nom'=>$nom,'id'=>$_SESSION['maison']));
+}

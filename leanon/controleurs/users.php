@@ -454,7 +454,11 @@ if(!isset($_GET['function']) || $_GET['function'] == '') {
     } elseif($function == "mode") {
         $content = "mode";
         include 'modele/mode.php';
-
+        //Code pour supprimer un mode
+        if (isset($_POST['supp_mode'])){
+        	$supp= supprimer_mode($_POST['mode_a_supprimer']);
+        }
+        //Code pour modifier un mode 
         if (isset($_POST['modif_mode']) AND isset($_POST['ancien_mode'])){
         	$nom=htmlspecialchars($_POST['ancien_mode']);
         	$newnom=htmlspecialchars($_POST['nom_mode_modif']);
@@ -472,15 +476,8 @@ if(!isset($_GET['function']) || $_GET['function'] == '') {
         	 
         	$modif=modifier_mode($newnom,$temp,$lum,$secu,$nom);
         }
-        if (isset($_POST['mode_nuit'])) {
-        	$activer = activer_mode(1);
-        	$alerte='Mode nuit activÃ©';
-        }
-        if (isset($_POST['mode_jour'])) {
-        	$activer = activer_mode(2);
-        	$alerte='Mode jour activÃ©';
-        }
-
+        
+		//Code pour ajouter un mode 
         if (isset($_POST['ajout'])) {
         	$nom = htmlspecialchars($_POST['nom_mode']);
         	$temperature = htmlspecialchars($_POST['temp']);
@@ -500,6 +497,19 @@ if(!isset($_GET['function']) || $_GET['function'] == '') {
         	$ajouter = insertion($bdd,$valeur,$table);
         }
         $requete = selection($bdd,'mode_obj','*','id_maison',$_SESSION['maison']);
+        
+        //Code pour activer le mode nuit
+        if (isset($_POST['mode_nuit'])) {
+        	$activer = activer_mode(1);
+        	$alerte='Mode nuit activÃ©';
+        }
+        //Code pour activer le mode jour
+        if (isset($_POST['mode_jour'])) {
+        	$activer = activer_mode(2);
+        	$alerte='Mode jour activÃ©';
+        }
+        
+        //Code pour activer un mode personnalisé 
         if (isset($_POST['mode_perso'])){
         	$id_mode = selection($bdd,'mode_obj','id','nom_mode',$_POST['mode_perso']);
         	$id_mode = $id_mode->fetch();
@@ -507,6 +517,27 @@ if(!isset($_GET['function']) || $_GET['function'] == '') {
         	$alerte= $_POST['mode_perso'] .' activÃ©';
         }
         
+    }elseif($function == 'mode_aff'){
+    	$content = 'mode_affichage';
+    	//Code pour afficher le contenu de chaque mode 
+    	if(isset($_GET['mode'])){
+    		$info = selection($bdd,'mode_obj','*','id',$_GET['mode']);
+    		$info = $info->fetch();
+    		$name = $info['nom_mode'];
+    		$lum = $info['luminosite'];
+    		if ($lum == 1){
+    			$lum = '<b><font color = green> ON </font></b>';
+    		} else {
+    			$lum ='<b><font color = red> OFF </font></b>';
+    		}
+    		$secu = $info['securite'];
+    		if ($secu == 1){
+    			$secu = '<b><font color = green> ON </font></b>';
+    		} else {
+    			$secu ='<b><font color = red> OFF </font></b>';
+    		}
+    		$temp = $info['temperature'] . ' CÂ°';
+    	}
     }elseif($function == 'config'){
     	$content = 'config';
     	//Si une pièce a été choisie, on l'insert dans la bdd

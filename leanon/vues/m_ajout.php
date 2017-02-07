@@ -6,6 +6,9 @@
 </head>
 <body>
 <h1>Renseignement du client  </h1>
+<?php if(isset($alerte)){
+                echo '<font color = red>' . $alerte . '</font>';
+        	} ?>
 
 <form action="" method="POST" >
 <div id="renseignement_maison" >

@@ -4,12 +4,32 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="vues/styles/connexion_typo.css">
 	<link rel="stylesheet" href="vues/styles/maison_vue.css" />
+	<link rel="stylesheet" type="text/css" href="vues/styles/pop_up.css">
 </head>
 <body>
 
 <div class='mode_corps'>
+	<!-- Si on veut supprimer un mode -->
+	<?php if (isset($_POST['supprimer'])){ ?> 
+	
+	<a href = 'index.php?cible=users&function=mode'><button>Retour</button></a>
+	
+	<h1> Supprimer un mode </h1>
+	<form action='' method='POST'>
+	<div class='supprimer_mode'>
+		<label for='supprimer'>Supprimer ce mode : </label>
+		<select name="mode_a_supprimer" id='supprimer'>
+			<?php foreach($requete as $key) {?>
+			<option value="<?=$key['nom_mode'] ?>" > <?= $key['nom_mode'] ?> </option>
+			<?php }?>
+		</select>
+	</div>
+	<input type = 'submit' name = 'supp_mode' value='Supprimer' class = 'submit'>
+	</form>
 
-	<?php if (isset($_POST['ajouter_mode'])){ ?>
+	
+	<!-- Si on veut ajouter un mode -->
+	<?php }elseif (isset($_POST['ajouter_mode'])){ ?>
 	
 	<a href = 'index.php?cible=users&function=mode'><button>Retour</button></a>
 	
@@ -76,6 +96,7 @@
 	</form>
 	</div>
 	
+	<!-- Si on veut modfier un mode -->
 	<?php } elseif(isset($_POST['modif'])){ ?>
 	
 	<a href = 'index.php?cible=users&function=mode'><button>Retour</button></a>
@@ -159,13 +180,7 @@
 	</form>
 	
 	
-	
-	
-	
-	
-	
-	
-	
+	<!-- page qui affiche tous les modes -->
 <?php }	else {?>
 	<h1> Mes Modes </h1>
 	
@@ -174,15 +189,28 @@
 	<br/>
 	
 	<form action ='' method ='POST'>
-	<input type="submit" name="mode_nuit" value = "Mode nuit" class='mode'> 
-	<input type="submit" name="mode_jour" value = "Mode jour" class='mode'> 
-	<?php foreach($requete as $key) {?>
+	<div class='block_mode'>
+		<input type="submit" name="mode_nuit" value = "Mode nuit" class='mode'>
+		<a href='index.php?cible=users&function=mode_aff&mode=1'> <img src="vues/styles/image/info.png" class="img_info" > </a>
 	
+	</div>
+	<div class='block_mode'>
+		<input type="submit" name="mode_jour" value = "Mode jour" class='mode'> 
+		<a href='index.php?cible=users&function=mode_aff&mode=2'> <img src="vues/styles/image/info.png" class="img_info" > </a>
+	
+	</div>
+	<?php foreach($requete as $key) {?>
+	<div class='block_mode'>
 		<input type="submit" name="mode_perso" value = "<?= $key['nom_mode']?> "class='mode'>
+		<a href='index.php?cible=users&function=mode_aff&mode=<?= $key['id']?>'> <img src="vues/styles/image/info.png" class="img_info" > </a>
+	
+	</div>
 	<?php }
 	
 	if ($_SESSION['id_type_utilisateur'] == 1 ){?>
 	<input type="submit" name="modif" value ="Modifier mes modes" class="mode_modif">
+	<input type="submit" name="supprimer" value ="Supprimer un mode" class="mode_modif">
+		
 	<input type="submit" name="ajouter_mode" value = "&plus;" class='plus'> 
 	
 	<?php }?>
@@ -191,6 +219,8 @@
 
 	<?php }?>
 </div>
+
+<script src="vues/js/popup_supprimer_mode.js"></script>
 </body>
 </html>
 

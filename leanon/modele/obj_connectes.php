@@ -155,7 +155,6 @@ function etat_obj($maison){
 			// c'est la condition des catégorie (1=temperature , 2= lumiere ,3 = securite)
 			if ($donnees1['id_categorie_objets_connectes'] == 1)
 			{
-				//cette condition est ssentielle pour ne pas diviser par un denominateur plus grand que le numerateur ce qui fausserait la condtion suivante , de meme on ne divise pas par 0
 				if ($donnees1['donnee_recue'] == $donnees1['donnee_demandee']){
 					$requete = $bdd -> prepare('UPDATE obj_connectes SET etat = :etat WHERE id = :id');
 					$requete -> execute(array('etat'=> 'fonctionne', 'id'=> $donnees1['id']));
@@ -179,56 +178,22 @@ function etat_obj($maison){
 		         	}
 				}
 			}
-			if ($donnees1['id_categorie_objets_connectes'] == 2)
+			if ($donnees1['id_categorie_objets_connectes'] == 2 OR $donnees1['id_categorie_objets_connectes'] == 3)
 			{
 				//cette condition est ssentielle pour ne pas diviser par un denominateur plus grand que le numerateur ce qui fausserait la condtion suivante , de meme on ne divise pas par 0
 				if ($donnees1['donnee_recue'] == $donnees1['donnee_demandee']){
 					$requete = $bdd -> prepare('UPDATE obj_connectes SET etat = :etat WHERE id = :id');
 					$requete -> execute(array('etat'=> 'fonctionne', 'id'=> $donnees1['id']));
 				} else {
-			
-					if ((($donnees1['seuil_erreur']+$donnees1['donnee_demandee'])/$donnees1['donnee_recue']) >1 and (($donnees1['donnee_demandee']-$donnees1['seuil_erreur'])/$donnees1['donnee_recue']) <1)
-					{
-			
-						$requete = $bdd -> prepare('UPDATE obj_connectes SET etat = :etat WHERE id = :id');
-						$requete -> execute(array('etat'=> 'fonctionne', 'id'=> $donnees1['id']));
-			
-					}
-					else
-					{
 						$requete = $bdd -> prepare('UPDATE obj_connectes SET etat = :etat WHERE id = :id');
 						$requete -> execute(array('etat'=> 'dysfonctionnement', 'id'=> $donnees1['id']));
 						$requete1 = $bdd ->prepare('SELECT * FROM obj_connectes WHERE id = :id');
 						$requete1 -> execute(array('id' => $donnees1['id']));
 						$etat[] = $requete1->fetch();
 						 
-					}
+					
 				}
-			}if ($donnees1['id_categorie_objets_connectes'] == 3)
-			{
-				//cette condition est ssentielle pour ne pas diviser par un denominateur plus grand que le numerateur ce qui fausserait la condtion suivante , de meme on ne divise pas par 0
-				if ($donnees1['donnee_recue'] == $donnees1['donnee_demandee']){
-					$requete = $bdd -> prepare('UPDATE obj_connectes SET etat = :etat WHERE id = :id');
-					$requete -> execute(array('etat'=> 'fonctionne', 'id'=> $donnees1['id']));
-				} else {
-		
-			        if ((($donnees1['seuil_erreur']+$donnees1['donnee_demandee'])/$donnees1['donnee_recue']) >1 and (($donnees1['donnee_demandee']-$donnees1['seuil_erreur'])/$donnees1['donnee_recue']) <1)
-			        {
-
-			        	$requete = $bdd -> prepare('UPDATE obj_connectes SET etat = :etat WHERE id = :id');
-			        	$requete -> execute(array('etat'=> 'fonctionne', 'id'=> $donnees1['id']));	
-			        	
-			        }
-		         	else
-		         	{
-		         		$requete = $bdd -> prepare('UPDATE obj_connectes SET etat = :etat WHERE id = :id');
-		         		$requete -> execute(array('etat'=> 'dysfonctionnement', 'id'=> $donnees1['id']));
-		         		$requete1 = $bdd ->prepare('SELECT * FROM obj_connectes WHERE id = :id');
-		         		$requete1 -> execute(array('id' => $donnees1['id']));
-		         		$etat[] = $requete1->fetch();
-		         		
-		         	}
-				}
+			
 			}
 		}
 		
