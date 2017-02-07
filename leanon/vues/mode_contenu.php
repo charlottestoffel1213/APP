@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="vues/styles/connexion_typo.css">
 	<link rel="stylesheet" href="vues/styles/maison_vue.css" />
-	<link rel="stylesheet" type="text/css" href="vues/styles/pop_up.css">
 </head>
 <body>
 
@@ -220,7 +219,6 @@
 	<?php }?>
 </div>
 
-<script src="vues/js/popup_supprimer_mode.js"></script>
 </body>
 </html>
 
